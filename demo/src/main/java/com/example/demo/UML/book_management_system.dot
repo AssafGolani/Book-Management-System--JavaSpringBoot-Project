@@ -1,0 +1,50 @@
+digraph BookManagementSystem {
+    rankdir=LR;
+
+    // Entities
+    Author [label="Author\n- id\n- name\n- books: Set<Book>"];
+    Book [label="Book\n- id\n- title\n- author\n- isbn\n- publisher\n- year\n- authors: Set<Author>"];
+
+    // Models
+    AuthorModel [label="AuthorModel\n- id\n- name\n- books: Set<BookModel>"];
+    BookModel [label="BookModel\n- id\n- title\n- isbn\n- publisher\n- year\n- authors: Set<AuthorModel>"];
+
+    // DTOs
+    AuthorDTO [label="AuthorDTO\n- id\n- name\n- books: Set<BookDTO>"];
+    BookDTO [label="BookDTO\n- id\n- title\n- isbn\n- publisher\n- year\n- authors: Set<AuthorDTO>"];
+
+    // Repositories
+    AuthorRepository [label="AuthorRepository\n- extends JpaRepository<Author, Long>"];
+    BookRepository [label="BookRepository\n- extends JpaRepository<Book, Long>"];
+
+    // Services
+    AuthorService [label="AuthorService\n- getAllAuthors()\n- getAuthorById(Long id)\n- addAuthor(AuthorDTO authorDTO)"];
+    BookService [label="BookService\n- getAllBooks()\n- getBookById(Long id)\n- addBook(BookDTO bookDTO)\n- updateBook(Long id, BookDTO bookDTO)\n- deleteBook(Long id)\n- searchBooksByTitle(String title)\n- searchAndSaveBooksByTitle(String title)"];
+
+    // Controllers
+    AuthorController [label="AuthorController\n- getAllAuthors()\n- getAuthorById(Long id)\n- addAuthor(AuthorDTO authorDTO)"];
+    BookController [label="BookController\n- getAllBooks()\n- getBookById(Long id)\n- addBook(BookDTO bookDTO)\n- updateBook(Long id, BookDTO bookDTO)\n- deleteBook(Long id)\n- searchBooksByTitle(String title)\n- searchAndSaveBooksByTitle(String title)"];
+
+    // External Service
+    ExternalBooksService [label="ExternalBooksService\n- searchBooksByTitle(String title)"];
+
+    // Errors
+    GlobalExceptionHandler [label="GlobalExceptionHandler\n- handleGlobalException(ResourceNotFoundException ex, WebRequest request)"];
+    ResourceNotFoundException [label="ResourceNotFoundException\n- extends RuntimeException"];
+    ErrorDetails [label="ErrorDetails\n- statusCode\n- message\n- details"];
+
+    // Relationships
+    AuthorModel -> Author [label="Represents"];
+    BookModel -> Book [label="Represents"];
+    AuthorDTO -> Author [label="Represents"];
+    BookDTO -> Book [label="Represents"];
+    AuthorService -> AuthorRepository [label="Uses"];
+    BookService -> BookRepository [label="Uses"];
+    AuthorService -> AuthorMapper [label="Uses"];
+    BookService -> BookMapper [label="Uses"];
+    AuthorController -> AuthorService [label="Calls"];
+    BookController -> BookService [label="Calls"];
+    BookService -> ExternalBooksService [label="Calls"];
+    GlobalExceptionHandler -> ResourceNotFoundException [label="Handles"];
+    GlobalExceptionHandler -> ErrorDetails [label="Returns"];
+}
