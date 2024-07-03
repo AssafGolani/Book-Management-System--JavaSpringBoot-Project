@@ -32,7 +32,7 @@ This is a Book Management System built using Java, Spring Boot, and PostgreSQL. 
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/book-management-system.git
+   git clone https://github.com/your-usernameAssafGolani/book-management-system.git
    cd book-management-system
 
 2. Configure the database:
