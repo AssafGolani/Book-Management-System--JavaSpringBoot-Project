@@ -55,8 +55,10 @@ spring.jpa.show-sql=true
 ### Usage
 #### API Endpoints
 
-####API Endpoints
-#####Books
+#### API Endpoints
+
+##### Books
+
 GET /api/books: Get all books
 GET /api/books/{id}: Get a book by ID
 POST /api/books: Add a new book
@@ -69,8 +71,10 @@ GET /api/authors: Get all authors
 GET /api/authors/{id}: Get an author by ID
 POST /api/authors: Add a new author
 
-####Example Requests
-#####Adding an Author
+#### Example Requests
+
+##### Adding an Author
+
 Request Type: POST
 URL: http://localhost:8080/api/authors
 Headers:
