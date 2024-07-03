@@ -1,4 +1,4 @@
-#Book Management System
+# Book Management System
 
 This is a Book Management System built using Java, Spring Boot, and PostgreSQL. The application allows you to manage books and authors, including the relationships between them. It also integrates with the Open Library API to search for books and save them to the local database.
 
@@ -32,7 +32,7 @@ This is a Book Management System built using Java, Spring Boot, and PostgreSQL. 
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/book-management-system.git
+   git clone https://github.com/your-usernameAssafGolani/book-management-system.git
    cd book-management-system
 
 2. Configure the database:
@@ -60,8 +60,10 @@ spring.jpa.show-sql=true
 ### Usage
 #### API Endpoints
 
-####API Endpoints
-#####Books
+#### API Endpoints
+
+##### Books
+
 GET /api/books: Get all books
 GET /api/books/{id}: Get a book by ID
 POST /api/books: Add a new book
@@ -74,8 +76,10 @@ GET /api/authors: Get all authors
 GET /api/authors/{id}: Get an author by ID
 POST /api/authors: Add a new author
 
-####Example Requests
-#####Adding an Author
+#### Example Requests
+
+##### Adding an Author
+
 Request Type: POST
 URL: http://localhost:8080/api/authors
 Headers:
