@@ -39,17 +39,22 @@ This is a Book Management System built using Java, Spring Boot, and PostgreSQL. 
 
 Update the application.properties file with your PostgreSQL database connection details:
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/bookdb
+```spring.datasource.url=jdbc:postgresql://localhost:5432/bookdb
 spring.datasource.username=yourUsername
 spring.datasource.password=yourPassword
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+```
 
 3. Build the project:
+```
 ./mvnw clean install
+```
 
 4. Run the application:
+```
 ./mvnw spring-boot:run
+```
 
 
 ### Usage
@@ -76,9 +81,11 @@ URL: http://localhost:8080/api/authors
 Headers:
 Content-Type: application/json
 Body:
+```
 {
     "name": "J. R. R. Tolkien"
 }
+```
 
 Adding a Book with Authors
 Request Type: POST
@@ -86,6 +93,7 @@ URL: http://localhost:8080/api/books
 Headers:
 Content-Type: application/json
 Body:
+```
 {
     "title": "The Lord of the Rings",
     "isbn": "9780544003415",
@@ -98,12 +106,14 @@ Body:
         }
     ]
 }
+```
 Updating a Book
 Request Type: PUT
 URL: http://localhost:8080/api/books/1
 Headers:
 Content-Type: application/json
 Body:
+```
 {
     "title": "The Lord of the Rings",
     "isbn": "9780544003415",
@@ -116,6 +126,7 @@ Body:
         }
     ]
 }
+```
 
 ### Example: Searching and Saving Books from External API
 Request Type: GET
