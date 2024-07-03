@@ -45,7 +45,7 @@ public class ExternalBooksService {
                     BookDTO bookDTO = new BookDTO();
                     bookDTO.setTitle(docNode.path("title").asText());
                     bookDTO.setIsbn(docNode.path("isbn").isArray() ? docNode.path("isbn").get(0).asText() : null);
-                    bookDTO.setPublisher("");  // Set other fields as needed
+                    bookDTO.setPublisher(""); // Set other fields as needed
                     bookDTO.setYear(docNode.path("first_publish_year").asInt());
                     return bookDTO;
                 })

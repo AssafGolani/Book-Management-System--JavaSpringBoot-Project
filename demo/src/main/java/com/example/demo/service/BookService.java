@@ -1,10 +1,10 @@
 package com.example.demo.service;
 
-
-import com.example.demo.dto.BookDTO;
 import com.example.demo.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.dto.BookDTO;
 import com.example.demo.entity.Book;
 import com.example.demo.repos.BookRepository;
 
@@ -23,25 +23,25 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    public List<BookDTO> getAllBooks(){
+    public List<BookDTO> getAllBooks() {
         return bookRepository.findAll().stream()
                 .map(BookMapper.INSTANCE::toDTO)
                 .collect(Collectors.toList());
     }
 
-    public BookDTO getBookById(Long id){
+    public BookDTO getBookById(Long id) {
         return bookRepository.findById(id)
                 .map(BookMapper.INSTANCE::toDTO)
                 .orElse(null);
     }
 
-    public BookDTO addBook(BookDTO bookDTO){
+    public BookDTO addBook(BookDTO bookDTO) {
         Book book = BookMapper.INSTANCE.toEntity(bookDTO);
         Book savedBook = bookRepository.save(book);
         return BookMapper.INSTANCE.toDTO(savedBook);
     }
 
-    public BookDTO updateBook(Long id, BookDTO bookDTO){
+    public BookDTO updateBook(Long id, BookDTO bookDTO) {
         return bookRepository.findById(id)
                 .map(existingBook -> {
                     Book book = BookMapper.INSTANCE.toEntity(bookDTO);
@@ -52,7 +52,7 @@ public class BookService {
                 .orElse(null);
     }
 
-    public void deleteBook(Long id){
+    public void deleteBook(Long id) {
         bookRepository.deleteById(id);
     }
 

@@ -12,20 +12,22 @@ import java.util.List;
 
 /**
  * Controllers: Handle HTTP requests and responses.
- BookController and AuthorController manage endpoints for book and author operations.
+ * BookController and AuthorController manage endpoints for book and author
+ * operations.
  */
 @RestController
 @RequestMapping("/api/authors")
 public class AuthorController {
     @Autowired
     private AuthorService authorService;
+
     @GetMapping
-    public List<AuthorDTO> getAllAuthors(){
+    public List<AuthorDTO> getAllAuthors() {
         return authorService.getAllAuthors();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AuthorDTO> getAuthorById(@PathVariable Long id){
+    public ResponseEntity<AuthorDTO> getAuthorById(@PathVariable Long id) {
         AuthorDTO authorDTO = authorService.getAuthorById(id);
         if (authorDTO != null) {
             return ResponseEntity.ok(authorDTO);
@@ -35,7 +37,7 @@ public class AuthorController {
     }
 
     @PostMapping
-    public ResponseEntity<AuthorDTO> addAuthor(@RequestBody AuthorDTO authorDTO){
+    public ResponseEntity<AuthorDTO> addAuthor(@RequestBody AuthorDTO authorDTO) {
         try {
             AuthorDTO createdAuthor = authorService.addAuthor(authorDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdAuthor);
